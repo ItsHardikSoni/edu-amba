@@ -7,52 +7,54 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function HowItWorks() {
-  const sectionRef = useRef(null);
-  const imageRef = useRef(null);
-  const stepsRef = useRef(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
+  const stepsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const section = sectionRef.current;
-    const image = imageRef.current;
-    const steps = stepsRef.current.children;
+    if(sectionRef.current && imageRef.current && stepsRef.current) {
+      const section = sectionRef.current;
+      const image = imageRef.current;
+      const steps = stepsRef.current.children;
 
-    gsap.fromTo(
-      image,
-      { opacity: 0, scale: 0.8 },
-      {
-        opacity: 1,
-        scale: 1,
-        duration: 1,
-        ease: 'power4.out',
-        scrollTrigger: {
-          trigger: section,
-          start: 'top 60%',
-          end: 'bottom 20%',
-          scrub: true,
-        },
-      }
-    );
+      gsap.fromTo(
+        image,
+        { opacity: 0, scale: 0.8 },
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 1,
+          ease: 'power4.out',
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 60%',
+            end: 'bottom 20%',
+            scrub: true,
+          },
+        }
+      );
 
-    gsap.fromTo(
-      steps,
-      {
-        opacity: 0,
-        y: 50,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        stagger: 0.2,
-        duration: 1,
-        ease: 'power4.out',
-        scrollTrigger: {
-          trigger: stepsRef.current,
-          start: 'top 80%',
-          end: 'bottom 20%',
-          scrub: true,
+      gsap.fromTo(
+        steps,
+        {
+          opacity: 0,
+          y: 50,
         },
-      }
-    );
+        {
+          opacity: 1,
+          y: 0,
+          stagger: 0.2,
+          duration: 1,
+          ease: 'power4.out',
+          scrollTrigger: {
+            trigger: stepsRef.current,
+            start: 'top 80%',
+            end: 'bottom 20%',
+            scrub: true,
+          },
+        }
+      );
+    }
   }, []);
 
   const stepsData = [

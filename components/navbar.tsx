@@ -3,12 +3,17 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link'
 
-export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const navRef = useRef(null);
+interface NavItem {
+  name: string;
+  href: string;
+}
 
-  const navItems = [
+export default function Navbar() {
+  const [scrolled, setScrolled] = useState<boolean>(false);
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const navRef = useRef<HTMLDivElement>(null);
+
+  const navItems: NavItem[] = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
     { name: 'Contact', href: '/contact' },
@@ -35,8 +40,8 @@ export default function Navbar() {
 
   // Handle clicks outside the navbar to close the menu
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (navRef.current && !navRef.current.contains(event.target)) {
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
+      if (navRef.current && !navRef.current.contains(event.target as Node)) {
         setIsMenuOpen(false);
       }
     };

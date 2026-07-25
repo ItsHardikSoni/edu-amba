@@ -7,31 +7,33 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Pricing() {
-  const pricingRef = useRef(null);
+  const pricingRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const pricingCards = pricingRef.current.children;
+    if (pricingRef.current) {
+      const pricingCards = pricingRef.current.children;
 
-    gsap.fromTo(
-      pricingCards,
-      {
-        opacity: 0,
-        y: 100,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        stagger: 0.2,
-        duration: 1,
-        ease: 'power4.out',
-        scrollTrigger: {
-          trigger: pricingRef.current,
-          start: 'top 80%',
-          end: 'bottom 20%',
-          scrub: true,
+      gsap.fromTo(
+        pricingCards,
+        {
+          opacity: 0,
+          y: 100,
         },
-      }
-    );
+        {
+          opacity: 1,
+          y: 0,
+          stagger: 0.2,
+          duration: 1,
+          ease: 'power4.out',
+          scrollTrigger: {
+            trigger: pricingRef.current,
+            start: 'top 80%',
+            end: 'bottom 20%',
+            scrub: true,
+          },
+        }
+      );
+    }
   }, []);
 
   const pricingData = [

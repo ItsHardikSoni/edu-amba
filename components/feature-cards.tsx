@@ -6,35 +6,43 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
+interface CardData {
+  title: string;
+  description: string;
+  icon: string;
+}
+
 export default function FeatureCards() {
-  const cardsRef = useRef(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const cards = cardsRef.current.children;
+    if (cardsRef.current) {
+      const cards = cardsRef.current.children;
 
-    gsap.fromTo(
-      cards,
-      {
-        y: 100,
-        opacity: 0,
-      },
-      {
-        y: 0,
-        opacity: 1,
-        stagger: 0.1,
-        duration: 1,
-        ease: 'power4.out',
-        scrollTrigger: {
-          trigger: cardsRef.current,
-          start: 'top 80%',
-          end: 'bottom 20%',
-          scrub: true,
+      gsap.fromTo(
+        cards,
+        {
+          y: 100,
+          opacity: 0,
         },
-      }
-    );
+        {
+          y: 0,
+          opacity: 1,
+          stagger: 0.1,
+          duration: 1,
+          ease: 'power4.out',
+          scrollTrigger: {
+            trigger: cardsRef.current,
+            start: 'top 80%',
+            end: 'bottom 20%',
+            scrub: true,
+          },
+        }
+      );
+    }
   }, []);
 
-  const cardData = [
+  const cardData: CardData[] = [
     {
       title: 'Bite-sized videos',
       description: 'Learn in 2-5 minute videos that fit into your busy schedule.',

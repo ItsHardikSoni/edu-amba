@@ -1,6 +1,13 @@
 'use client';
 
-const icons = [
+import React from 'react';
+
+interface Icon {
+  icon: string;
+  name: string;
+}
+
+const icons: Icon[] = [
   { icon: '🔤', name: 'English' },
   { icon: '🕉️', name: 'Hindi' },
   { icon: '🔢', name: 'Maths' },
@@ -10,7 +17,8 @@ const icons = [
   { icon: '🎨', name: 'Art' },
   { icon: '⚽', name: 'Sports' },
 ];
-const iconStyles = [
+
+const iconStyles: React.CSSProperties[] = [
   // Left side
   { top: '20%', left: '20%', transform: 'rotate(-15deg)', fontSize: '2.5rem' },
   { top: '40%', left: '10%', transform: 'rotate(10deg)', fontSize: '3rem' },

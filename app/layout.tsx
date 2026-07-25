@@ -10,13 +10,14 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className="bg-gradient-to-b from-blue-50 via-white to-orange-50">
-        <SmoothScroll/>
-        <ConditionalNavbar />
-        {children}
+        <SmoothScroll>
+          <ConditionalNavbar />
+          {children}
+        </SmoothScroll>
       </body>
     </html>
   );

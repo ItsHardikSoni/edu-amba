@@ -6,19 +6,19 @@ import Link from 'next/link';
 import Cookies from 'js-cookie';
 
 export default function LoginPage() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState('');
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [error, setError] = useState<string>('');
   const router = useRouter();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
     
     if (email === 'admin@example.com' && password === 'password') {
-      Cookies.set('isLoggedIn', 'true', { expires: 7 });
-      router.replace('/admin'); // Use replace instead of push
+      Cookies.set('aura_admin_session', 'true', { expires: 7 });
+      router.replace('/dashboard'); // Use replace instead of push
     } else {
       setError('Invalid email or password');
     }

@@ -7,31 +7,33 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Testimonials() {
-  const testimonialsRef = useRef(null);
+  const testimonialsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const testimonials = testimonialsRef.current.children;
+    if (testimonialsRef.current) {
+      const testimonials = testimonialsRef.current.children;
 
-    gsap.fromTo(
-      testimonials,
-      {
-        opacity: 0,
-        y: 100,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        stagger: 0.2,
-        duration: 1,
-        ease: 'power4.out',
-        scrollTrigger: {
-          trigger: testimonialsRef.current,
-          start: 'top 80%',
-          end: 'bottom 20%',
-          scrub: true,
+      gsap.fromTo(
+        testimonials,
+        {
+          opacity: 0,
+          y: 100,
         },
-      }
-    );
+        {
+          opacity: 1,
+          y: 0,
+          stagger: 0.2,
+          duration: 1,
+          ease: 'power4.out',
+          scrollTrigger: {
+            trigger: testimonialsRef.current,
+            start: 'top 80%',
+            end: 'bottom 20%',
+            scrub: true,
+          },
+        }
+      );
+    }
   }, []);
 
   const testimonialData = [

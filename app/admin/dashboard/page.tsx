@@ -3,11 +3,11 @@
 import { useRouter } from 'next/navigation';
 import Cookies from 'js-cookie';
 
-export default function AdminPage() {
+export default function DashboardPage() {
   const router = useRouter();
 
   const handleLogout = () => {
-    Cookies.remove('isLoggedIn');
+    Cookies.remove('aura_admin_session');
     router.push('/login');
   };
 
