@@ -4,7 +4,7 @@ import FloatingIcons from './floating-icons';
 
 export default function Hero() {
   return (
-    <section className="relative flex flex-col items-center justify-center min-h-screen bg-white overflow-hidden">
+    <section className="relative flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-blue-50 via-white to-orange-50 overflow-hidden">
       <FloatingIcons />
       <div className="relative z-10 text-center px-4 pt-20">
         <div className="flex items-center justify-center mb-4">
@@ -50,8 +50,11 @@ export default function Hero() {
           </a>
         </div>
       </div>
-      <div className="absolute bottom-10 right-10 md:right-20 lg:right-40 bg-white p-4 rounded-full shadow-lg animate-pulse">
-        <span className="text-2xl text-gray-700">Hola</span>
+      <div className="absolute bottom-40 right-10 md:right-20 lg:right-40">
+        <div className="relative bg-white p-4 rounded-full shadow-lg">
+          <span className="text-2xl text-gray-700">Hola</span>
+          <div className="absolute top-full right-1/2 transform translate-x-1/2 w-0 h-0 border-t-8 border-t-white border-l-8 border-l-transparent border-r-8 border-r-transparent"></div>
+        </div>
       </div>
        <div className="absolute -bottom-40 left-1/2 transform -translate-x-1/2 w-[300px] h-[300px] md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px]">
         <img src="https://i.ibb.co/L888Yp8/RDT-20240723-1801261372551493630283087-01-01.png" alt="Parrot" className="w-full h-full object-contain" />
