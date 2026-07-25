@@ -8,14 +8,18 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const router = useRouter();
 
   const handleLogout = async () => {
-    try {
-      await fetch('/api/auth/logout', { method: 'POST' });
-    } catch (error) {
-      console.error('An unexpected error occurred during logout:', error);
+    if (window.confirm("Are you sure you want to logout?")) {
+      try {
+        await fetch('/api/auth/logout', { method: 'POST' });
+      } catch (error) {
+        console.error('An unexpected error occurred during logout:', error);
+      }
+      
+      Cookies.remove('aura_admin_session');
+      localStorage.clear();
+      sessionStorage.clear();
+      router.replace('/');
     }
-    
-    Cookies.remove('aura_admin_session');
-    router.replace('/login');
   };
 
   return (
