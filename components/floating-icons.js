@@ -1,44 +1,41 @@
 'use client';
-import { useState, useEffect } from 'react';
 
 const icons = [
-  { icon: '🇲🇽', name: 'Mexico' },
-  { icon: '🇪🇸', name: 'Spain' },
-  { icon: '🇦🇷', name: 'Argentina' },
-  { icon: '🇨🇴', name: 'Colombia' },
-  { icon: '🇨🇱', name: 'Chile' },
-  { icon: '🇵🇪', name: 'Peru' },
-  { icon: '🇻🇪', name: 'Venezuela' },
-  { icon: '🇪🇨', name: 'Ecuador' },
-  { icon: '🇬🇹', name: 'Guatemala' },
-  { icon: '🇨🇺', name: 'Cuba' },
+  { icon: '🔤', name: 'English' },
+  { icon: '🕉️', name: 'Hindi' },
+  { icon: '🔢', name: 'Maths' },
+  { icon: '🔬', name: 'Science' },
+  { icon: '🇮🇳', name: 'India' },
+  { icon: '📚', name: 'Books' },
+  { icon: '🎨', name: 'Art' },
+  { icon: '⚽', name: 'Sports' },
+];
+const iconStyles = [
+  // Left side
+  { top: '20%', left: '20%', transform: 'rotate(-15deg)', fontSize: '2.5rem' },
+  { top: '40%', left: '10%', transform: 'rotate(10deg)', fontSize: '3rem' },
+  { top: '55%', left: '25%', transform: 'rotate(15deg)', fontSize: '2.8rem' },
+  { top: '70%', left: '15%', transform: 'rotate(-5deg)', fontSize: '3.2rem' },
+  // Right side
+  { top: '15%', left: '75%', transform: 'rotate(15deg)', fontSize: '2.7rem' },
+  { top: '35%', left: '80%', transform: 'rotate(-10deg)', fontSize: '3.1rem' },
+  { top: '55%', left: '70%', transform: 'rotate(5deg)', fontSize: '2.9rem' },
+  { top: '75%', left: '85%', transform: 'rotate(-15deg)', fontSize: '3.3rem' },
 ];
 
 export default function FloatingIcons() {
-  const [styles, setStyles] = useState([]);
-
-  useEffect(() => {
-    setStyles(
-      icons.map(() => ({
-        top: `${Math.random() * 80 + 10}%`,
-        left: `${Math.random() * 80 + 10}%`,
-        fontSize: `${Math.random() * 2 + 1.5}rem`,
-        transform: `rotate(${Math.random() * 60 - 30}deg)`,
-      }))
-    );
-  }, []);
-
+  
   return (
     <div className="absolute top-0 left-0 w-full h-full z-0 overflow-hidden">
       {icons.map((item, i) => (
         <div
           key={i}
           className="absolute p-2 bg-white rounded-xl shadow-lg transform-gpu transition-transform duration-500 hover:scale-110"
-          style={styles[i]}
+          style={iconStyles[i]}
         >
-          <span className="text-4xl">{item.icon}</span>
+          <span style={{ fontSize: iconStyles[i].fontSize }}>{item.icon}</span>
         </div>
       ))}
     </div>
-  );
-}
+    );
+  }    
