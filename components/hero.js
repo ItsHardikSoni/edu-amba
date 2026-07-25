@@ -1,12 +1,11 @@
 
-import { FaApple, FaGooglePlay } from 'react-icons/fa';
 import FloatingIcons from './floating-icons';
 
 export default function Hero() {
   return (
     <section className="relative flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-blue-50 via-white to-orange-50 overflow-hidden">
       <FloatingIcons />
-      <div className="relative z-10 text-center px-4 pt-20">
+      <div className="relative z-10 text-center px-4">
         <div className="flex items-center justify-center mb-4">
           <div className="flex -space-x-2 mr-2">
             <img className="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
@@ -27,34 +26,13 @@ export default function Hero() {
           Parrot makes language learning feel like your favorite feed — quick
           videos, real phrases, and bite-sized practice every day.
         </p>
-        <div className="mt-8 flex flex-col sm:flex-row justify-center items-center gap-4">
-          <a
-            href="#"
-            className="bg-black text-white px-6 py-3 rounded-lg flex items-center justify-center w-full sm:w-auto"
-          >
-            <FaApple className="h-6 w-6 mr-3" />
-            <div>
-              <div className="text-xs">Download on the</div>
-              <div className="text-lg font-semibold">App Store</div>
-            </div>
-          </a>
-          <a
-            href="#"
-            className="bg-black text-white px-6 py-3 rounded-lg flex items-center justify-center w-full sm:w-auto"
-          >
-            <FaGooglePlay className="h-6 w-6 mr-3" />
-            <div>
-              <div className="text-xs">GET IT ON</div>
-              <div className="text-lg font-semibold">Google Play</div>
-            </div>
-          </a>
-        </div>
+        
       </div>
       <div className="absolute bottom-40 right-10 md:right-20 lg:right-40">
-        <div className="relative bg-white p-4 rounded-full shadow-lg">
+        {/* <div className="relative bg-white p-4 rounded-full shadow-lg">
           <span className="text-2xl text-gray-700">Hola</span>
           <div className="absolute top-full right-1/2 transform translate-x-1/2 w-0 h-0 border-t-8 border-t-white border-l-8 border-l-transparent border-r-8 border-r-transparent"></div>
-        </div>
+        </div> */}
       </div>
        <div className="absolute -bottom-40 left-1/2 transform -translate-x-1/2 w-[300px] h-[300px] md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px]">
         <img src="https://i.ibb.co/L888Yp8/RDT-20240723-1801261372551493630283087-01-01.png" alt="Parrot" className="w-full h-full object-contain" />
