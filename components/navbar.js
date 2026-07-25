@@ -83,7 +83,7 @@ export default function Navbar() {
           </nav>
         </div>
         <div className="hidden md:flex items-center space-x-4">
-          <a href="#" className="text-gray-600 hover:text-gray-900 font-semibold">Log in</a>
+          <a href="/admin" className="text-gray-600 hover:text-gray-900 font-semibold">Log in</a>
           {/* <a href="#" className="bg-orange-500 text-white px-4 py-2 rounded-lg font-semibold hover:bg-orange-600">Start Learning</a> */}
         </div>
         <div className="md:hidden">
@@ -103,7 +103,7 @@ export default function Navbar() {
                 {item.name}
               </a>
             ))}
-            <a href="#" className="text-gray-600 hover:text-gray-900 font-semibold block rounded-md px-3 py-2 text-base">Log in</a>
+            <a href="/admin" className="text-gray-600 hover:text-gray-900 font-semibold block rounded-md px-3 py-2 text-base">Log in</a>
           </div>
         </div>
       )}

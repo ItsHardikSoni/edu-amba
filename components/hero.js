@@ -3,7 +3,7 @@ import LottieAnimation from './LottieAnimation';
 
 export default function Hero() {
   return (
-    <section className="relative flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-blue-50 via-white to-orange-50 overflow-hidden pt-30">
+    <section className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden pt-30">
       <FloatingIcons />
       <div className="relative z-0 text-center px-4">
         <div className="flex items-center justify-center mb-4">
