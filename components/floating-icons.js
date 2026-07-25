@@ -26,7 +26,7 @@ const iconStyles = [
 export default function FloatingIcons() {
   
   return (
-    <div className="absolute top-0 left-0 w-full h-full z-0 overflow-hidden">
+    <div className="absolute top-0 left-0 w-full h-full z-0 overflow-hidden hidden md:block">
       {icons.map((item, i) => (
         <div
           key={i}
