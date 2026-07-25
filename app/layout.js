@@ -3,8 +3,8 @@ import SmoothScroll from '@/components/smooth-scroll'
 import './globals.css';
 
 export const metadata = {
-  title: 'Parrot',
-  description: 'The all-in-one platform for effortless learning and teaching.',
+  title: 'Tagore Vidyapeeth',
+  description: 'Your trusted partner in education.',
 };
 
 export default function RootLayout({ children }) {

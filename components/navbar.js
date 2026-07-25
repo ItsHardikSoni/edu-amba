@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import Link from 'next/link'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -9,8 +10,8 @@ export default function Navbar() {
 
   const navItems = [
     { name: 'Home', href: '/' },
-    { name: 'About', href: '#' },
-    { name: 'Contact', href: '#' },
+    { name: 'About', href: '/about' },
+    { name: 'Contact', href: '/contact' },
   ];
 
   // Handle scroll events to set scrolled state and close menu
@@ -69,21 +70,21 @@ export default function Navbar() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
         <div className="flex items-center space-x-8">
           <div className="flex items-center space-x-2">
-            <a href='/' className="flex items-center space-x-2">
+            <Link href='/' className="flex items-center space-x-2">
             <img src="https://i.ibb.co/b3b0k3A/Parrot-Logo.png" alt="Parrot Logo" className="h-8 w-8" />
-            <span className="text-xl font-bold text-gray-900">Parrot</span>
-            </a>
+            <span className="text-xl font-bold text-gray-900">Tagore Vidyapeeth</span>
+            </Link>
           </div>
           <nav className="hidden md:flex items-center space-x-6">
             {navItems.map((item) => (
-              <a key={item.name} href={item.href} className="text-gray-600 hover:text-gray-900 font-semibold">
+              <Link key={item.name} href={item.href} className="text-gray-600 hover:text-gray-900 font-semibold">
                 {item.name}
-              </a>
+              </Link>
             ))}
           </nav>
         </div>
         <div className="hidden md:flex items-center space-x-4">
-          <a href="/admin" className="text-gray-600 hover:text-gray-900 font-semibold">Log in</a>
+          <Link href="/admin" className="text-gray-600 hover:text-gray-900 font-semibold">Log in</Link>
           {/* <a href="#" className="bg-orange-500 text-white px-4 py-2 rounded-lg font-semibold hover:bg-orange-600">Start Learning</a> */}
         </div>
         <div className="md:hidden">
@@ -99,11 +100,11 @@ export default function Navbar() {
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navItems.map((item) => (
-              <a key={item.name} href={item.href} className="text-gray-600 hover:text-gray-900 font-semibold block rounded-md px-3 py-2 text-base">
+              <Link key={item.name} href={item.href} className="text-gray-600 hover:text-gray-900 font-semibold block rounded-md px-3 py-2 text-base">
                 {item.name}
-              </a>
+              </Link>
             ))}
-            <a href="/admin" className="text-gray-600 hover:text-gray-900 font-semibold block rounded-md px-3 py-2 text-base">Log in</a>
+            <Link href="/admin" className="text-gray-600 hover:text-gray-900 font-semibold block rounded-md px-3 py-2 text-base">Log in</Link>
           </div>
         </div>
       )}

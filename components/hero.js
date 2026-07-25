@@ -18,12 +18,11 @@ export default function Hero() {
           </p>
         </div>
         <h1 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight">
-          Learn{' '}
+          Welcome to{' '}
+          <br/>
           <span className="inline-block bg-orange-400 px-4 rounded-lg text-white">
-            Spanish
+          Tagore Vidyapeeth
           </span>
-          <br />
-          by scrolling smarter
         </h1>
         <p className="mt-6 text-lg text-gray-600 max-w-md mx-auto">
           Parrot makes language learning feel like your favorite feed — quick
