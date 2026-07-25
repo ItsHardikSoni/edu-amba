@@ -7,7 +7,7 @@ export async function POST(request: Request) {
 
     // In a real application, you would validate these credentials against a database.
     // This is a placeholder for that logic.
-    if (email === 'admin@example.com' && password === 'password') {
+    if (email === 'admin@aura.com' && password === 'aura') {
       // If authentication is successful, return a success response.
       // We can also create and return a session token (e.g., JWT) here.
       const response = NextResponse.json({ success: true, message: 'Login successful' });
