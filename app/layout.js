@@ -5,6 +5,9 @@ import './globals.css';
 export const metadata = {
   title: 'Tagore Vidyapeeth',
   description: 'Your trusted partner in education.',
+  icons: {
+    icon: '/logo.jpeg',
+  },
 };
 
 export default function RootLayout({ children }) {

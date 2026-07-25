@@ -71,7 +71,7 @@ export default function Navbar() {
         <div className="flex items-center space-x-8">
           <div className="flex items-center space-x-2">
             <Link href='/' className="flex items-center space-x-2">
-            <img src="https://i.ibb.co/b3b0k3A/Parrot-Logo.png" alt="Parrot Logo" className="h-8 w-8" />
+            <img src="/icon.png" alt="Tagore Vidyapeeth Logo" className="h-12 w-auto" />
             <span className="text-xl font-bold text-gray-900">Tagore Vidyapeeth</span>
             </Link>
           </div>
