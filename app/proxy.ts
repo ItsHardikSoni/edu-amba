@@ -1,6 +1,22 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse, NextRequest } from 'next/server';
 
-export default function proxy(req: NextRequest) {
-  console.log('Request received:', req.nextUrl.pathname);
+export default function proxy(request: NextRequest) {
+  const session = request.cookies.get('aura_admin_session')?.value;
+  const { pathname } = request.nextUrl;
+
+  // Protect admin routes
+  if (pathname.startsWith('/admin')) {
+    if (!session) {
+      return NextResponse.redirect(new URL('/login', request.url));
+    }
+  }
+
+  // Redirect from login if already authenticated
+  if (pathname === '/login') {
+    if (session) {
+      return NextResponse.redirect(new URL('/admin/dashboard', request.url));
+    }
+  }
+
   return NextResponse.next();
 }
