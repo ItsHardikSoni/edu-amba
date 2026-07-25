@@ -32,8 +32,7 @@ export default function LoginPage() {
     setError('');
 
     try {
-      const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://3000-firebase-vote-me-1768205766339.cluster-a6zx3cwnb5hnuwbgyxmofxpkfe.cloudworkstations.dev/' || 'http://localhost:3000';
-      const res = await fetch(`${apiBaseUrl}/api/auth/login`, {
+      const res = await fetch(`/api/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
