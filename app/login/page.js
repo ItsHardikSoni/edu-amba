@@ -17,8 +17,8 @@ export default function LoginPage() {
     setError('');
     
     if (email === 'admin@example.com' && password === 'password') {
-      Cookies.set('isLoggedIn', 'true', { expires: 7 }); // Set cookie for 7 days
-      router.push('/admin');
+      Cookies.set('isLoggedIn', 'true', { expires: 7 });
+      router.replace('/admin'); // Use replace instead of push
     } else {
       setError('Invalid email or password');
     }
@@ -33,7 +33,7 @@ export default function LoginPage() {
           </Link>
           <h2 className="mt-6 text-3xl font-extrabold text-gray-900">Sign in to your account</h2>
         </div>
-        <form className="mt-8 space-y-6">
+        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
               <label htmlFor="email-address" className="sr-only">Email address</label>
@@ -89,9 +89,8 @@ export default function LoginPage() {
 
           <div>
             <button
-              type="button"
+              type="submit"
               className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-              onClick={handleSubmit}
             >
               Sign in
             </button>

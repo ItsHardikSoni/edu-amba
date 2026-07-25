@@ -1,20 +1,13 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import Cookies from 'js-cookie';
 
 export default function AdminPage() {
   const router = useRouter();
 
-  useEffect(() => {
-    const isLoggedIn = localStorage.getItem('isLoggedIn');
-    if (isLoggedIn !== 'true') {
-      router.push('/login');
-    }
-  }, [router]);
-
   const handleLogout = () => {
-    localStorage.removeItem('isLoggedIn');
+    Cookies.remove('isLoggedIn');
     router.push('/login');
   };
 
