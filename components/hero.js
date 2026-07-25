@@ -36,7 +36,7 @@ export default function Hero() {
           </Button>
         </div> */}
       </div>
-      <div className=" md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[400px]">
+      <div className=" md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px] lg:w-[500px]">
         <LottieAnimation />
       </div>
     </section>
