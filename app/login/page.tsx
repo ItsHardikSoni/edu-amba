@@ -12,15 +12,39 @@ export default function LoginPage() {
   const [error, setError] = useState<string>('');
   const router = useRouter();
 
+  const validateEmail = (email: string) => {
+    const re = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    return re.test(email);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
-    
-    if (email === 'admin@example.com' && password === 'password') {
-      Cookies.set('aura_admin_session', 'true', { expires: 7 });
-      router.replace('/dashboard'); // Use replace instead of push
-    } else {
-      setError('Invalid email or password');
+
+    if (!validateEmail(email)) {
+      setError('Invalid email format');
+      return;
+    }
+
+    try {
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        Cookies.set('aura_admin_session', 'true', { expires: 7 });
+        router.replace('/admin/dashboard');
+      } else {
+        setError(data.message);
+      }
+    } catch (error) {
+      setError('An unexpected error occurred');
     }
   };
 

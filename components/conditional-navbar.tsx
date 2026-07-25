@@ -5,9 +5,8 @@ import Navbar from './navbar';
 
 export default function ConditionalNavbar() {
   const pathname = usePathname();
-  const hideNavbarRoutes = ['/admin', '/login'];
 
-  if (hideNavbarRoutes.includes(pathname)) {
+  if (pathname.startsWith('/admin') || pathname === '/login') {
     return null;
   }
 

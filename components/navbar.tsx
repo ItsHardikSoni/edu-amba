@@ -11,6 +11,7 @@ interface NavItem {
 export default function Navbar() {
   const [scrolled, setScrolled] = useState<boolean>(false);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const navRef = useRef<HTMLDivElement>(null);
 
   const navItems: NavItem[] = [
@@ -18,6 +19,11 @@ export default function Navbar() {
     { name: 'About', href: '/about' },
     { name: 'Contact', href: '/contact' },
   ];
+
+  useEffect(() => {
+    // In a real app, you'd check for a token or session here
+    setIsLoggedIn(false); // Mocking user as not logged in
+  }, []);
 
   // Handle scroll events to set scrolled state and close menu
   useEffect(() => {
@@ -89,8 +95,11 @@ export default function Navbar() {
           </nav>
         </div>
         <div className="hidden md:flex items-center space-x-4">
-          <Link href="/admin" className="text-gray-600 hover:text-gray-900 font-semibold">Log in</Link>
-          {/* <a href="#" className="bg-orange-500 text-white px-4 py-2 rounded-lg font-semibold hover:bg-orange-600">Start Learning</a> */}
+          {isLoggedIn ? (
+            <Link href="/admin/dashboard" className="text-gray-600 hover:text-gray-900 font-semibold">Dashboard</Link>
+          ) : (
+            <Link href="/login" className="text-gray-600 hover:text-gray-900 font-semibold">Log in</Link>
+          )}
         </div>
         <div className="md:hidden">
           <button onClick={toggleMenu} className="text-gray-900 focus:outline-none">
@@ -109,7 +118,11 @@ export default function Navbar() {
                 {item.name}
               </Link>
             ))}
-            <Link href="/admin" className="text-gray-600 hover:text-gray-900 font-semibold block rounded-md px-3 py-2 text-base">Log in</Link>
+            {isLoggedIn ? (
+              <Link href="/admin/dashboard" className="text-gray-600 hover:text-gray-900 font-semibold block rounded-md px-3 py-2 text-base">Dashboard</Link>
+            ) : (
+              <Link href="/login" className="text-gray-600 hover:text-gray-900 font-semibold block rounded-md px-3 py-2 text-base">Log in</Link>
+            )}
           </div>
         </div>
       )}
