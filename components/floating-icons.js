@@ -30,7 +30,7 @@ export default function FloatingIcons() {
       {icons.map((item, i) => (
         <div
           key={i}
-          className="absolute p-2 bg-white rounded-xl shadow-lg transform-gpu transition-transform duration-500 hover:scale-110"
+          className="absolute transform-gpu transition-transform duration-500 hover:scale-110"
           style={iconStyles[i]}
         >
           <span style={{ fontSize: iconStyles[i].fontSize }}>{item.icon}</span>

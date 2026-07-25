@@ -1,5 +1,3 @@
-'use client';
-// import { Button } from '@/components/ui/button';
 import FloatingIcons from './floating-icons';
 import LottieAnimation from './LottieAnimation';
 
@@ -38,7 +36,7 @@ export default function Hero() {
           </Button>
         </div> */}
       </div>
-      <div className="w-[300px] h-[300px] md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px]">
+      <div className=" md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[400px]">
         <LottieAnimation />
       </div>
     </section>
