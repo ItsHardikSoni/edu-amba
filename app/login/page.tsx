@@ -193,53 +193,70 @@ export default function LoginForm() {
 
   if (step === 'verifyOtp') {
     return (
-      <div className="mt-8 space-y-6">
-        <button
-          onClick={() => setStep('login')}
-          className="flex items-center gap-2 text-xs text-gray-500 hover:text-primary transition-colors mb-4"
-        >
-          <ArrowLeft className="w-3 h-3" /> Change Email
-        </button>
-
-        <div className="text-center mb-6">
-          <div className="mx-auto w-12 h-12 bg-gold-50 rounded-full flex items-center justify-center mb-4">
-            <KeyRound className="w-6 h-6 text-primary" />
-          </div>
-          <h3 className="text-lg font-medium text-gray-900">Verify your identity</h3>
-          <p className="text-sm text-gray-500 mt-1">We've sent a 6-digit code to <br /><span className="font-semibold text-gray-700">{email}</span></p>
-        </div>
-
-        {error && (
-          <div className="p-3 rounded-md bg-red-50 text-red-600 text-sm border border-red-200">
-            {error}
-          </div>
-        )}
-
-        <form onSubmit={onVerifyOtp} className="space-y-6">
-          <div>
-            <input
-              type="text"
-              maxLength={6}
-              value={otp}
-              onChange={(e) => setOtp(e.target.value.replace(/\D/g, ''))}
-              placeholder="000000"
-              className="block w-full text-center text-3xl tracking-[10px] font-bold rounded-xl border-0 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary transition-all"
-              autoFocus
-            />
-          </div>
-
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-100 via-purple-50 to-pink-100 p-4">
+        <div className="w-full max-w-md bg-white rounded-xl shadow-2xl p-8 space-y-6">
           <button
-            type="submit"
-            disabled={isLoading || otp.length !== 6}
-            className="group relative flex w-full justify-center rounded-xl bg-black px-3 py-4 text-sm font-bold text-white hover:bg-gray-900 transition-all shadow-xl disabled:opacity-50"
+            onClick={() => setStep('login')}
+            className="flex items-center gap-2 text-xs text-gray-500 hover:text-primary transition-colors mb-4"
           >
-            {isLoading ? <Loader2 className="h-5 w-5 animate-spin" /> : "Verify & Sign In"}
+            <ArrowLeft className="w-3 h-3" /> Change Email
           </button>
 
-          <p className="text-center text-xs text-gray-400">
-            Didn't receive code? <button type="button" onClick={() => onSendOtp(getValues())} className="text-primary font-semibold hover:underline">Resend</button>
-          </p>
-        </form>
+          <div className="text-center mb-6">
+            <div className="mx-auto w-16 h-16 bg-gradient-to-tr from-primary to-gold-400 rounded-full flex items-center justify-center mb-4 shadow-lg">
+              <KeyRound className="w-8 h-8 text-white" />
+            </div>
+            <h3 className="text-2xl font-bold text-gray-900">Verify Your Identity</h3>
+            <p className="text-gray-600 mt-2">
+              An email with a 6-digit verification code has been sent to <br />
+              <span className="font-semibold text-primary">{email}</span>.
+            </p>
+          </div>
+
+          {error && (
+            <div className="p-4 rounded-lg bg-red-50 text-red-700 border border-red-200">
+              {error}
+            </div>
+          )}
+
+          <form onSubmit={onVerifyOtp} className="space-y-6">
+            <div>
+              <label htmlFor="otp-input" className="sr-only">
+                Verification Code
+              </label>
+              <input
+                id="otp-input"
+                type="text"
+                maxLength={6}
+                value={otp}
+                onChange={(e) => setOtp(e.target.value.replace(/\D/g, ''))}
+                placeholder="000-000"
+                className="block w-full text-center text-4xl tracking-[12px] font-mono font-bold rounded-xl border-2 border-gray-200 py-4 text-gray-800 placeholder:text-gray-300 focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-all"
+                autoFocus
+              />
+            </div>
+
+            <button
+              type="submit"
+              disabled={isLoading || otp.length !== 6}
+              className="group relative flex w-full justify-center rounded-xl bg-gradient-to-r from-primary to-indigo-600 px-4 py-4 text-sm font-bold text-white hover:from-indigo-600 hover:to-primary transition-all shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-60"
+            >
+              {isLoading ? <Loader2 className="h-5 w-5 animate-spin" /> : "Verify & Sign In"}
+            </button>
+
+            <div className="text-center text-sm text-gray-500">
+              <span>Didn't receive the code?</span>{' '}
+              <button
+                type="button"
+                onClick={() => onSendOtp(getValues())}
+                className="font-semibold text-primary hover:text-indigo-600 hover:underline"
+                disabled={isLoading}
+              >
+                Resend OTP
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     );
   }
