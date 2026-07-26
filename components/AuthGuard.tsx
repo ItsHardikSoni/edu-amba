@@ -9,12 +9,34 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    const session = Cookies.get('aura_admin_session');
-    if (!session) {
-      router.replace("/login");
-    } else {
-      setIsAuthenticated(true);
-    }
+    const checkAuth = () => {
+      const adminSession = Cookies.get('aura_admin_session');
+      // If session exists, consider authenticated regardless of role cookie timing
+      if (!adminSession) {
+        setIsAuthenticated(false);
+        router.replace("/login");
+      } else {
+        setIsAuthenticated(true);
+      }
+    };
+
+    checkAuth();
+
+    // Re-run check on back/forward navigation, page show, and visibility change
+    const handlePopState = () => checkAuth();
+    window.addEventListener('pageshow', checkAuth);
+    window.addEventListener('popstate', handlePopState);
+    window.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') {
+        checkAuth();
+      }
+    });
+
+    return () => {
+      window.removeEventListener('pageshow', checkAuth);
+      window.removeEventListener('popstate', handlePopState);
+      window.removeEventListener('visibilitychange', checkAuth);
+    };
   }, [router]);
 
   if (!isAuthenticated) {

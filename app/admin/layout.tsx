@@ -3,22 +3,29 @@ import { Bell, Book, CheckCircle, DollarSign, UserPlus, Award, LogOut } from 'lu
 import { useRouter } from 'next/navigation';
 import Cookies from 'js-cookie';
 import AuthGuard from '@/components/AuthGuard';
+import { supabase } from '@/lib/supabase';
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
 
   const handleLogout = async () => {
     if (window.confirm("Are you sure you want to logout?")) {
-      try {
-        await fetch('/api/auth/logout', { method: 'POST' });
-      } catch (error) {
-        console.error('An unexpected error occurred during logout:', error);
-      }
-      
+      // Clear authentication cookies and local storage
       Cookies.remove('aura_admin_session');
+      Cookies.remove('aura_faculty_session');
+      Cookies.remove('user_role');
       localStorage.clear();
       sessionStorage.clear();
-      router.replace('/');
+      // Sign out from Supabase if needed (optional)
+      try {
+        await supabase.auth.signOut();
+      } catch (e) {
+        console.error('Supabase sign out error:', e);
+      }
+      // Replace history entry and force a full navigation to login
+      router.replace('/login');
+      // Ensure the current entry is replaced to prevent back navigation
+      window.location.replace('/login');
     }
   };
 
